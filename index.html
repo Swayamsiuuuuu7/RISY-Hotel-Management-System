@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Management System</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-wrapper">
+
+  <!-- 🔥 UPDATED LEFT SIDE -->
+  <div class="login-left">
+
+    <div class="left-content">
+
+      <!-- LOGO -->
+      <div class="logo-box">
+        <img src="logo.png" alt="RISY Logo">
+      </div>
+
+      <!-- TEXT -->
+      <div class="text-box">
+        <h1>HOTEL</h1>
+        <h1>MANAGEMENT</h1>
+        <h1>SYSTEM</h1>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT SIDE (UNCHANGED) -->
+  <div class="login-right">
+    <h2>Secure Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button onclick="login()">LOGIN</button>
+  </div>
+
+</div>
+
+<!-- MAIN APP -->
+<div id="appPage" style="display:none;" class="app-layout">
+
+ <!-- SIDEBAR -->
+<div class="sidebar">
+
+  <!-- 🔥 RISY BOX -->
+  <div class="sidebar-logo">
+    <h2>RISY</h2>
+  </div>
+
+  <ul>
+    <li onclick="showDashboard()">Dashboard</li>
+    <li onclick="showBooking()">Booking</li>
+    <li onclick="showGuestLog()">Guest Log</li>
+  </ul>
+
+</div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- DASHBOARD -->
+    <div id="dashboardPage">
+
+      <div class="dashboard-header">
+        <h1>Dashboard</h1>
+        <p>Overview of your hotel performance</p>
+      </div>
+
+      <div class="stats">
+
+        <div class="stat-card">
+          <h3>Total Rooms</h3>
+          <p id="totalRooms">50</p>
+        </div>
+
+        <div class="stat-card highlight">
+          <h3>Booked</h3>
+          <p id="bookedRooms">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Available</h3>
+          <p id="availableRooms">50</p>
+        </div>
+
+      </div>
+
+      <!-- ROOM TYPE STATS -->
+      <div class="stats" style="margin-top: 25px;">
+
+        <div class="stat-card">
+          <h3>Single Left</h3>
+          <p id="singleLeft">20</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Double Left</h3>
+          <p id="doubleLeft">20</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Suite Left</h3>
+          <p id="suiteLeft">10</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOOKING -->
+    <div id="bookingPage" style="display:none;">
+      <div class="booking-header">
+        <h1>Room Booking</h1>
+        <p>Enter customer details and assign room</p>
+      </div>
+
+      <div class="container">
+
+        <div class="card">
+          <h2>Customer Details</h2>
+
+          <label>Name</label>
+          <input id="name" placeholder="Enter full name">
+
+          <label>Email</label>
+          <input id="email" placeholder="Enter email">
+
+          <label>Phone</label>
+          <input id="phone" placeholder="Enter phone number">
+        </div>
+
+        <div class="card highlight-card">
+          <h2>Room Booking</h2>
+
+          <label>Room Type</label>
+          <select id="roomType" onchange="setPrice()">
+            <option value="">Select Room Type</option>
+            <option value="Single">Single</option>
+            <option value="Double">Double</option>
+            <option value="Suite">Suite</option>
+          </select>
+
+          <label>Price</label>
+          <input id="price" placeholder="Auto-filled" readonly>
+
+          <button onclick="bookRoom()">Book Room</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GUEST LOG -->
+    <div id="guestPage" style="display:none;">
+
+      <div class="guest-header">
+        <h1>Guest Log</h1>
+        <p>All booked customers</p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Room</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="output"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-box" id="popupText"></div>
+</div>
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabaseClient = supabase.createClient(
+  "https://ughmqnsujqauevbdjqrv.supabase.co",
+  "sb_publishable_YMNFGxUo6IL74LEsA7mIcg_Fi39DA0N"
+);
+</script>
+
+<!-- YOUR SCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
