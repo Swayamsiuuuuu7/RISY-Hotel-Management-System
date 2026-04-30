@@ -53,7 +53,15 @@ Shows all bookings with edit and delete functionality.
 
 ## 🗄️ Database Schema
 
-sql CREATE EXTENSION IF NOT EXISTS "uuid-ossp";  CREATE TABLE bookings (   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),   name TEXT NOT NULL,   email TEXT NOT NULL,   phone TEXT NOT NULL,   room_type TEXT NOT NULL,   price INT NOT NULL,   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ); 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";  
+CREATE TABLE bookings (   
+id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),   
+name TEXT NOT NULL,   
+email TEXT NOT NULL,   
+phone TEXT NOT NULL,   
+room_type TEXT NOT NULL,   
+price INT NOT NULL,   
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ); 
 
 ---
 
